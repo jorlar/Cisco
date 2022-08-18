@@ -9,7 +9,7 @@ import re
 
 
 platform = 'cisco_wlc'
-fopen = open('ap_host.txt', 'r')
+fopen = open('ap_host.txt', 'r') ## Create ap_hosts.txt and enter ip's for WLC
 hosts = fopen.read().splitlines()
 username = getpass.getuser("Please enter username: ")                  
 password = getpass.getpass("Please enter the password for the WLCs: " )
