@@ -1,0 +1,26 @@
+from netmiko import ConnectHandler
+
+## device settings
+wlc = {'host': 'x.x.x.x',
+       'port': 22,
+       'username': 'user',
+       'password': 'psw',
+       'device_type': 'cisco_wlc_ssh'}
+
+wlc_connect = ConnectHandler(**wlc)
+
+## CLI Commands list
+wlc_show_commands = ('show ap summary'
+                     )
+
+## Append to List 
+my_list = wlc_show_commands 
+
+## Save to txt file
+with open('show.txt', 'w') as f:
+    for wlc_show_command in wlc_show_commands:
+        f.write(wlc_connect.send_command_w_enter(wlc_show_command))
+
+## close
+f.close()
+wlc_connect.disconnect()
